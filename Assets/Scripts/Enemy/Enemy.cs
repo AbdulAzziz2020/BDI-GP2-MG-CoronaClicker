@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour, IDamagable
 {
     public EnemySO enemyData;
-    
+
+    private string name;
     private int health;
     private int damage;
     private float _rate;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     void InitializationEnemy()
     {
+        name = enemyData.name;
         health = enemyData.baseHealth;
         damage = enemyData.baseDamage;
         attackRate = enemyData.baseAttackRate;
