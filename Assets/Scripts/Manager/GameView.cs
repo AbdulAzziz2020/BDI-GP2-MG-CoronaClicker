@@ -13,7 +13,6 @@ public class GameView : MonoBehaviour
     [Header("GameView")] 
     public UIButton nextButton;
     public UIButton prevButton;
-    public UIButton PauseButton;
     public UIButton homeButton;
 
     [Header("Show And Hide!")]
@@ -30,29 +29,10 @@ public class GameView : MonoBehaviour
     public UIAnimator homeAnim;
     public UIContainer shopAnim;
     public UIContainer healthBarAnim;
-    
-    #region Listener Region
 
-    private void OnEnable()
-    {
-        nextButton.onClickEvent.AddListener(EnemyInitialization.Instance.OnNextEnemy);
-        prevButton.onClickEvent.AddListener(EnemyInitialization.Instance.OnPreviousEnemy);
-        showHideButton.onClickEvent.AddListener(ShowAndHide);
-        
-        Debug.LogWarning("Succes Added Listener!");
-    }
-    
-    private void OnDisable()
-    {
-        nextButton.onClickEvent.RemoveListener(EnemyInitialization.Instance.OnNextEnemy);
-        prevButton.onClickEvent.RemoveListener(EnemyInitialization.Instance.OnPreviousEnemy);
-        showHideButton.onClickEvent.RemoveListener(ShowAndHide);
-        
-        Debug.LogError("Succes Remove Listener!");
-    }
-
-    #endregion
-
+    [Header("OnPaused!")]
+    public UIButton pauseButton;
+    public GameObject pausePanel;
     public void ShowAndHide()
     {
         isHide = !isHide;
@@ -77,5 +57,10 @@ public class GameView : MonoBehaviour
             shopAnim.Hide();
         }
     }
-    
+
+    public void OnPaused()
+    {
+        GameManager.Instance.isPause = !GameManager.Instance.isPause;
+        pausePanel.SetActive(GameManager.Instance.isPause);
+    }
 }

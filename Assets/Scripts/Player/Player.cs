@@ -8,19 +8,19 @@ public class Player : MonoBehaviour, IDamagable
 {
     public PlayerSO playerData;
     
-    private int _health;
-    private int _damage;
-    private int _critRate;
-    private int _critDamage;
+    [HideInInspector] public int health;
+    [HideInInspector] public int damage;
+    [HideInInspector] public float critRate;
+    [HideInInspector] public int critDamage;
 
     public LayerMask enemyMask;
 
     private void Awake()
     {
-        _health = playerData.baseHealth;
-        _damage = playerData.baseDamage;
-        _critRate = playerData.baseCritRate;
-        _critDamage = playerData.baseCritDamage;
+        health = playerData.baseHealth;
+        damage = playerData.baseDamage;
+        critRate = playerData.baseCritRate;
+        critDamage = playerData.baseCritDamage;
     }
 
     public void Update()
@@ -34,19 +34,22 @@ public class Player : MonoBehaviour, IDamagable
         
             if (hit.collider != null)
             {
-                bool isCrit = Random.Range(0, 100) < _critRate;
+                bool isCrit = Random.Range(0f, 100f) < critRate;
                 
                 IDamagable damagable = hit.collider.GetComponent<IDamagable>();
-                DamagePopup.Create(hitPosition, damagable, _damage, _critDamage, isCrit);
+                DamagePopup.Create(hitPosition, damagable, damage, critDamage, isCrit);
+
+                GameData.coin++;
+                Debug.Log($"<color=green>++{GameData.coin}</color> Coin");
             }
         }
     }
 
     public void TakeDamage(int amount)
     {
-        _health -= amount;
+        health -= amount;
 
-        if (_health <= 0) Die();
+        if (health <= 0) Die();
     }
 
     void Die()

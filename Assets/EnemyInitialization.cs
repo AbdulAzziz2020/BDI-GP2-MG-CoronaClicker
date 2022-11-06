@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class EnemyInitialization : SingletonMonoBehavior<EnemyInitialization>
 {
-    [Header("Enemies")]
+    [Header("Enemies")] 
+    public TMP_Text enemyName;
     public GameObject[] arrEnemy;
     
     private int _curIndex = 0;
     [HideInInspector] public List<GameObject> listEnemy = new List<GameObject>();
-    
+
     public override void Awake()
     {
         base.Awake();
     }
-    
+
     private void Start()
     {
         InitializationEnemy();
@@ -36,12 +38,13 @@ public class EnemyInitialization : SingletonMonoBehavior<EnemyInitialization>
     
     #region EnemyNavigation
 
-        public void ShowEnemy()
+        void ShowEnemy()
         {
             listEnemy[_curIndex].SetActive(true);
+            enemyName.text = listEnemy[_curIndex].GetComponent<Enemy>().enemyName;
         }
 
-        public void HideEnemy()
+        void HideEnemy()
         {
             listEnemy[_curIndex].SetActive(false);
         }

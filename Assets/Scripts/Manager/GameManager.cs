@@ -8,6 +8,11 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     public bool isGameOver = false;
     public bool isPause = false;
 
+    public void Start()
+    {
+        Debug.Log(GameData.coin);
+    }
+
     public bool GlobalPause()
     {
         if (isGameOver || isPause)
