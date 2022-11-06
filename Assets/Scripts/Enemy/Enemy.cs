@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public EnemySO enemyData;
 
     public string enemyName;
-    private int health;
+    public int health;
     private int damage;
     private float _rate;
     private Vector2 attackRate;
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour, IDamagable
         health = enemyData.baseHealth;
         damage = enemyData.baseDamage;
         attackRate = enemyData.baseAttackRate;
-        _rate = Random.Range((int)attackRate.x, (int)attackRate.y);
+        _rate = (attackRate.x + attackRate.y) / 2;
     }
 
     private void OnEnable()
@@ -43,9 +43,11 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             _animator.SetTrigger("Attack");
             _rate = Random.Range((int)attackRate.x, (int)attackRate.y) + Time.time;
-
+            
             IDamagable pDamagable = GameObject.Find("Player").GetComponent<IDamagable>();
             pDamagable.TakeDamage(damage);
+            
+            GameView.Instance.UpdateStatUI();
         }
         
         Debug.Log("isPause or isGameOver");

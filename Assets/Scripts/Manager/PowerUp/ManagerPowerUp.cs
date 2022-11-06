@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ManagerPowerUp : MonoBehaviour
@@ -15,14 +16,19 @@ public class ManagerPowerUp : MonoBehaviour
     public int priceIncDmg;
     public int priceIncCritRate;
     public int priceIncCritDmg;
+
+    public event Action OnUpdateStatus;
     
     public void Heal()
     {
-        if (GameData.coin >= priceHeal)
+        if (player.coin >= priceHeal)
         {
-            GameData.coin -= priceHeal;
+            player.coin -= priceHeal;
             player.health += heal;
-            Debug.Log($"Coin <color=red>-{GameData.coin}</color>");
+            Debug.Log($"Coin <color=red>-{player.coin}</color>");
+            
+            GameData.Instance.Save();
+            OnUpdateStatus?.Invoke();
         }
         else
         {
@@ -32,11 +38,14 @@ public class ManagerPowerUp : MonoBehaviour
 
     public void IncreaseDamage()
     {
-        if (GameData.coin >= priceIncDmg)
+        if (player.coin >= priceIncDmg)
         {
-            GameData.coin -= priceHeal;
+            player.coin -= priceIncDmg;
             player.damage += incDmg;
-            Debug.Log($"Coin <color=red>-{GameData.coin}</color>");
+            Debug.Log($"Coin <color=red>-{player.coin}</color>");
+            
+            GameData.Instance.Save();
+            OnUpdateStatus?.Invoke();
         }
         else
         {
@@ -46,11 +55,14 @@ public class ManagerPowerUp : MonoBehaviour
 
     public void IncreaseCritRate()
     {
-        if (GameData.coin >= priceIncCritRate)
+        if (player.coin >= priceIncCritRate && player.critRate <= 100)
         {
-            GameData.coin -= priceHeal;
+            player.coin -= priceIncCritRate;
             player.critRate += incCritRate;
-            Debug.Log($"Coin <color=red>-{GameData.coin}</color>");
+            Debug.Log($"Coin <color=red>-{player.coin}</color>");
+            
+            GameData.Instance.Save();
+            OnUpdateStatus?.Invoke();
         }
         else
         {
@@ -60,11 +72,14 @@ public class ManagerPowerUp : MonoBehaviour
 
     public void IncreaseCritDmg()
     {
-        if (GameData.coin >= priceIncCritDmg)
+        if (player.coin >= priceIncCritDmg)
         {
-            GameData.coin -= priceHeal;
+            player.coin -= priceIncCritDmg;
             player.critDamage += incCritDmg;
-            Debug.Log($"Coin <color=red>-{GameData.coin}</color>");
+            Debug.Log($"Coin <color=red>-{player.coin}</color>");
+            
+            GameData.Instance.Save();
+            OnUpdateStatus?.Invoke();
         }
         else
         {

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Classic Corona
   m_EditorClassIdentifier: 
   enemyName: Classic Corona
-  baseHealth: 1000000
-  baseDamage: 100
-  baseAttackRate: {x: 30, y: 50}
+  baseHealth: 2147483647
+  baseDamage: 2
+  baseAttackRate: {x: 1, y: 10}

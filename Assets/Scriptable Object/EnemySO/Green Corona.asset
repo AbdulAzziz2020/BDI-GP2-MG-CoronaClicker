@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a17a718e65f72d4980619db749f6567, type: 3}
   m_Name: Green Corona
   m_EditorClassIdentifier: 
-  enemyName: GreenCorona
-  baseHealth: 1000
-  baseDamage: 0
-  baseAttackRate: {x: 20, y: 100}
+  enemyName: Green Corona
+  baseHealth: 2147483647
+  baseDamage: 10
+  baseAttackRate: {x: 5, y: 20}

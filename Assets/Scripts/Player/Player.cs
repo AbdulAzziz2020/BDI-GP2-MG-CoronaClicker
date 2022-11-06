@@ -7,20 +7,29 @@ using Random = UnityEngine.Random;
 public class Player : MonoBehaviour, IDamagable
 {
     public PlayerSO playerData;
-    
-    [HideInInspector] public int health;
-    [HideInInspector] public int damage;
-    [HideInInspector] public float critRate;
-    [HideInInspector] public int critDamage;
+    public int coin;
+    public int health;
+    public int damage;
+    public float critRate;
+    public int critDamage;
 
     public LayerMask enemyMask;
+    public event Action OnUpdateStatUI;
 
-    private void Awake()
+    private void Start()
     {
-        health = playerData.baseHealth;
-        damage = playerData.baseDamage;
-        critRate = playerData.baseCritRate;
-        critDamage = playerData.baseCritDamage;
+        string load = SaveSystem.Load();
+        
+        if (load == null)
+        {
+            coin = 0;
+            health = playerData.baseHealth;
+            damage = playerData.baseDamage;
+            critRate = playerData.baseCritRate;
+            critDamage = playerData.baseCritDamage;
+            
+            OnUpdateStatUI?.Invoke();
+        }
     }
 
     public void Update()
@@ -38,9 +47,12 @@ public class Player : MonoBehaviour, IDamagable
                 
                 IDamagable damagable = hit.collider.GetComponent<IDamagable>();
                 DamagePopup.Create(hitPosition, damagable, damage, critDamage, isCrit);
-
-                GameData.coin++;
-                Debug.Log($"<color=green>++{GameData.coin}</color> Coin");
+                
+                coin++;
+                OnUpdateStatUI?.Invoke();
+                GameData.Instance.Save();
+                
+                Debug.Log($"<color=green>++{coin}</color> Coin");
             }
         }
     }
@@ -54,7 +66,8 @@ public class Player : MonoBehaviour, IDamagable
 
     void Die()
     {
-        Debug.Log("Player Death");
-        
+        Debug.LogError("Player Death");
+
+        GameManager.Instance.GameOver();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,14 +17,15 @@ public class EnemyInitialization : SingletonMonoBehavior<EnemyInitialization>
     public override void Awake()
     {
         base.Awake();
+        
     }
 
     private void Start()
     {
         InitializationEnemy();
     }
-    
-    public void InitializationEnemy()
+
+    void InitializationEnemy()
     {
         for (int i = 0; i < arrEnemy.Length; i++)
         {

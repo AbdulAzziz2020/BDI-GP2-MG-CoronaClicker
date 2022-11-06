@@ -84,6 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 40cd312fbce21b042b220aca59e8edba, type: 2}
+  enemyName: 
+  health: 0
 --- !u!1 &3772005274642516036
 GameObject:
   m_ObjectHideFlags: 0

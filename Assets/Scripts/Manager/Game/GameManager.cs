@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
@@ -8,9 +9,11 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     public bool isGameOver = false;
     public bool isPause = false;
 
-    public void Start()
+    public override void Awake()
     {
-        Debug.Log(GameData.coin);
+        base.Awake();
+        
+        GameData.Instance.Load();
     }
 
     public bool GlobalPause()
@@ -35,5 +38,24 @@ public class GameManager : SingletonMonoBehavior<GameManager>
             
             return false;
         }
+    }
+
+    public void GameOver()
+    {
+        isGameOver = true;
+        
+        SaveSystem.DeleteData();
+        GameView.Instance.GameOverPanel.Show();
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.LogError("Application Exit!");
     }
 }
