@@ -66,6 +66,8 @@ public class GameView : SingletonMonoBehavior<GameView>
     {
         isHide = !isHide;
         showHideImage.sprite = !isHide ? showSprite : hideSprite;
+        
+        AudioManager.Instance.PlaySFX("OnClick");
 
         if (!isHide)
         {

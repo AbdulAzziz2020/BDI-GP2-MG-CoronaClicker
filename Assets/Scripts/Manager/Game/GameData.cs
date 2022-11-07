@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameData : SingletonMonoBehavior<GameData>
 {
-    public PlayerSO playerData;
     public Player player;
 
     public override void Awake()
@@ -34,7 +33,6 @@ public class GameData : SingletonMonoBehavior<GameData>
         SaveSystem.Save(playerJson);
 
         Debug.LogWarning("Saved!");
-        Debug.LogWarning(playerJson);
     }
 
     public void Load()
@@ -52,8 +50,6 @@ public class GameData : SingletonMonoBehavior<GameData>
             player.damage = saveData.damage;
             player.critRate = saveData.crit;
             player.critDamage = saveData.critDmg;
-            
-            Debug.LogWarning("Load Successful");
         }
         else
         {

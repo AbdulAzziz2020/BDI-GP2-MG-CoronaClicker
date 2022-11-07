@@ -51,8 +51,6 @@ public class Player : MonoBehaviour, IDamagable
                 coin++;
                 OnUpdateStatUI?.Invoke();
                 GameData.Instance.Save();
-                
-                Debug.Log($"<color=green>++{coin}</color> Coin");
             }
         }
     }

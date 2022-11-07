@@ -13,7 +13,6 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     {
         base.Awake();
         
-        GameData.Instance.Load();
     }
 
     public bool GlobalPause()
@@ -40,10 +39,14 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         }
     }
 
+    private void Start()
+    {
+        GameData.Instance.Load();
+    }
+
     public void GameOver()
     {
         isGameOver = true;
-        
         SaveSystem.DeleteData();
         GameView.Instance.GameOverPanel.Show();
     }

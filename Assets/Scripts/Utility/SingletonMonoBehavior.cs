@@ -7,7 +7,7 @@ public class SingletonDontDestroyOnLoad<T> : MonoBehaviour where T : Component
     
     public virtual void Awake()
     {
-        if (Instance != null && Instance != this) Destroy(this);
+        if (Instance != this && Instance != null) Destroy(this);
         else
         {
             Instance = this as T;

@@ -21,6 +21,8 @@ public class ManagerPowerUp : MonoBehaviour
     
     public void Heal()
     {
+        AudioManager.Instance.PlaySFX("OnClick");
+        
         if (player.coin >= priceHeal)
         {
             player.coin -= priceHeal;
@@ -38,6 +40,8 @@ public class ManagerPowerUp : MonoBehaviour
 
     public void IncreaseDamage()
     {
+        AudioManager.Instance.PlaySFX("OnClick");
+        
         if (player.coin >= priceIncDmg)
         {
             player.coin -= priceIncDmg;
@@ -55,6 +59,8 @@ public class ManagerPowerUp : MonoBehaviour
 
     public void IncreaseCritRate()
     {
+        AudioManager.Instance.PlaySFX("OnClick");
+        
         if (player.coin >= priceIncCritRate && player.critRate <= 100)
         {
             player.coin -= priceIncCritRate;
@@ -72,6 +78,8 @@ public class ManagerPowerUp : MonoBehaviour
 
     public void IncreaseCritDmg()
     {
+        AudioManager.Instance.PlaySFX("OnClick");
+        
         if (player.coin >= priceIncCritDmg)
         {
             player.coin -= priceIncCritDmg;

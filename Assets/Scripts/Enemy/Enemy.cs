@@ -49,8 +49,6 @@ public class Enemy : MonoBehaviour, IDamagable
             
             GameView.Instance.UpdateStatUI();
         }
-        
-        Debug.Log("isPause or isGameOver");
     }
 
     public void TakeDamage(int amount)
