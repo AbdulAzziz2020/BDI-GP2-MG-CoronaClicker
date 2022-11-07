@@ -9811,6 +9811,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listSFX.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listBGM.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 572b2625d9f7df84d8db9383ef532ee9, type: 3}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listSFX.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 63efd7e9a185cf24dbdfa85e5bb5d858, type: 3}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listSFX.Array.data[1].name
+      value: OnHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listBGM.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listSFX.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listSFX.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listBGM.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listSFX.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272966995790031111, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
+      propertyPath: listSFX.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f321cdaea948f234cb1cb81be8e43d64, type: 3}
 --- !u!1001 &8872179752305565285

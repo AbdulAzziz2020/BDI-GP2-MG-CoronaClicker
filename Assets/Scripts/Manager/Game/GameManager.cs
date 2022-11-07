@@ -53,6 +53,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void LoadScene(string sceneName)
     {
+        AudioManager.Instance.PlaySFX("OnClick");
         SceneManager.LoadScene(sceneName);
     }
 

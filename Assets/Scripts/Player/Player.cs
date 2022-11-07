@@ -49,6 +49,7 @@ public class Player : MonoBehaviour, IDamagable
                 DamagePopup.Create(hitPosition, damagable, damage, critDamage, isCrit);
                 
                 coin++;
+                AudioManager.Instance.PlaySFX("OnHit");
                 OnUpdateStatUI?.Invoke();
                 GameData.Instance.Save();
             }

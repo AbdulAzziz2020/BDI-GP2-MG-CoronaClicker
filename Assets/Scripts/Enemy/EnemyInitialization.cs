@@ -57,6 +57,8 @@ public class EnemyInitialization : SingletonMonoBehavior<EnemyInitialization>
 
             if (_curIndex < listEnemy.Count - 1) _curIndex++;
             else _curIndex = 0;
+            
+            AudioManager.Instance.PlaySFX("OnClick");
         
             ShowEnemy();
         }
@@ -67,6 +69,8 @@ public class EnemyInitialization : SingletonMonoBehavior<EnemyInitialization>
 
             if (_curIndex == 0) _curIndex = listEnemy.Count - 1;
             else _curIndex--;
+            
+            AudioManager.Instance.PlaySFX("OnClick");
         
             ShowEnemy();
         }

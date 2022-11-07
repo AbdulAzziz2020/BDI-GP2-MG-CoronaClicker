@@ -93,6 +93,8 @@ public class GameView : SingletonMonoBehavior<GameView>
     {
         GameManager.Instance.isPause = !GameManager.Instance.isPause;
         pausePanel.SetActive(GameManager.Instance.isPause);
+        
+        AudioManager.Instance.PlaySFX("OnClick");
     }
 
     public void UpdateStatUI()
